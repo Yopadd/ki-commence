@@ -3,10 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Ki Commence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .message-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #6b61ffff;
+      margin: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 1px 2px 8px #fcb69f88;
+    }
+    .refresh-btn {
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.2rem;
+      padding: 10px 28px 10px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #6b61ffff;
+      border-radius: 40px 18px 40px 18px / 28px 40px 28px 40px;
+      box-shadow: 0 4px 16px rgba(252,182,159,0.25);
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .refresh-btn {
+      margin-right: 10px;
+      font-size: 1.5em;
+    }
+  </style>
+  <script>
+  const COLORS = [
+    '#6b61ff',
+    '#ff6f61',
+    '#00b894',
+    '#0984e3',
+    '#e17055',
+    '#00cec9',
+    '#d35400',
+    '#e84393',
+    '#636e72',
+  ];
+
+  function pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const color = pickRandom(COLORS)
+    document.querySelector('.refresh-btn').style.background = color;
+    document.querySelector('.message-text').style.color = color;
+  });
+  </script>
 </head>
 <body>
-  <p>{{ message }}<p>
-  <a href="/">{{ lang === 'fr' ? 'Relance' : 'Refresh' }}</a>
+  <div class="message-text">{{ message }}</div>
+  <div style="display: flex; gap: 18px; justify-content: center;">
+    <a href="/" class="refresh-btn">
+      {{ lang === 'fr' ? 'Relancer' : 'Refresh' }}
+    </a>
+  </div>
 </body>
 </html>
